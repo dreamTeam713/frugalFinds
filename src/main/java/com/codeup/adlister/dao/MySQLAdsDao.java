@@ -30,11 +30,26 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> all() {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads");
+//            stmt = connection.prepareStatement("SELECT * FROM ads");
+           stmt = connection.prepareStatement("SELECT ads.*,u.username FROM ads JOIN users u ON ads.user_id = u.id");
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
+    @Override
+    public void update(Ad ad){
+        try {
+            String updateQuery = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+            PreparedStatement ps = connection.prepareStatement(updateQuery);
+            ps.setString(1,ad.getTitle());
+            ps.setString(2,ad.getDescription());
+            ps.setLong(3,ad.getId());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException("Error updating ad.", e);
         }
     }
 
@@ -60,7 +75,8 @@ public class MySQLAdsDao implements Ads {
             rs.getLong("id"),
             rs.getLong("user_id"),
             rs.getString("title"),
-            rs.getString("description")
+            rs.getString("description"),
+            rs.getString("username")
         );
     }
 

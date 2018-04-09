@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
@@ -32,6 +33,19 @@ public class RegisterServlet extends HttpServlet {
         if (inputHasErrors) {
             response.sendRedirect("/register");
             return;
+        }
+        if(DaoFactory.getUsersDao().findByUsername(request.getParameter("username")) ==null){
+            User newUser = new User(
+                    request.getParameter("username"),
+                    request.getParameter("email"),
+                    request.getParameter("password")
+            );
+            DaoFactory.getUsersDao().insert(newUser);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", newUser);
+            response.sendRedirect("/profile");
+        }else {
+            response.sendRedirect("/register");
         }
 
         // create and save a new user

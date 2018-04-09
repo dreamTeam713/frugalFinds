@@ -17,6 +17,8 @@ public class ListAdsDao implements Ads {
 
     @Override
     public void update(Ad ad) {
+    }
+    public void delete(Long adId){
 
     }
     public List<Ad> findByText(String search){

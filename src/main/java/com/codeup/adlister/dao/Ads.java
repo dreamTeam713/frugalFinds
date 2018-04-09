@@ -10,6 +10,7 @@ public interface Ads {
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
     void update(Ad ad);
+    void delete(Long adId);
     List<Ad> findAdsByUser(Long userId);
     List<Ad> findByText(String search);
 }

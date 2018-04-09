@@ -16,23 +16,31 @@
             max-height: 75px;
             overflow-y: scroll;
         }
+        #profileTitle{
+            display: inline;
+        }
     </style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <h1>Welcome, ${sessionScope.user.username}! </h1>
         <div>
-            <h3>Here are the ads you've created!</h3>
+            <h3 id="profileTitle">Here are the ads you've created!</h3>
+            <form action="ads/create">
+            <button class="btn btn-default btn-sm pull-right">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Ad
+            </button>
+            </form>
             <c:forEach var="ad" items="${userAds}">
                 <div class="col-md-6">
                     <h2>${ad.title}</h2>
                     <p id="descriptionParagraph">${ad.description}</p>
                     <c:if test="${sessionScope.user.id == ad.userId}">
-                        <input id="editButton" type="button" value="edit" class="btn btn-primary">
-                        <input id="deleteButton" type="button" value="delete" class="btn btn-primary">
-                        <form id="updateAdForm" class="hideForm" action="ads/update" method="post">
+                        <input id="editButton" type="button" value="edit" class="btn btn-primary editButton" data-adId="${ad.id}">
+                        <input id="deleteButton" type="button" value="delete" class="btn btn-primary deleteButton" data-adid="${ad.id}">
+                        <form class="hideForm updateAdForm" action="ads/update" method="post">
                             <div class="form-group">
                                 <input id="adId" name="adId" class="form-control" type="text" value="${ad.id}">
                             </div>
@@ -57,11 +65,23 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
 
-        // $('div input').click(function (e) {
-        //     e.preventDefault();
-        //     $(this).next().toggle();
-        // })
-        $('')
+        $('.editButton').click(function (e) {
+            e.preventDefault();
+            $(this).parent().find('form').toggle()
+            ;
+        });
+        $('.deleteButton').click(function (e){
+            e.preventDefault();
+            if(confirm("Are you sure you want to delete?")){
+               var this2 = $(this);
+                $.post("/deleteAds", {
+                    adId: $(this).data("adid")
+                }).done(function(data) {
+                    this2.parent().remove();
+                    alert("Delete Successful!");
+                });
+            }
+        })
     </script>
 </body>
 </html>

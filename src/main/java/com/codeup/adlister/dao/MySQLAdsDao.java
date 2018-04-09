@@ -30,12 +30,34 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> all() {
         PreparedStatement stmt = null;
         try {
-//            stmt = connection.prepareStatement("SELECT * FROM ads");
            stmt = connection.prepareStatement("SELECT ads.*,u.username FROM ads JOIN users u ON ads.user_id = u.id");
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+    public List<Ad> findAdsByUser(Long userId){
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement("SELECT ads.*,u.username FROM ads JOIN users u on ads.user_id = u.id WHERE user_id = ?");
+            ps.setLong(1,userId);
+            ResultSet rs = ps.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e){
+            throw new RuntimeException("Error retrieving user's ads",e);
+        }
+    }
+    public List<Ad> findByText(String search) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT a.*, u.username FROM ads a JOIN users u ON a.user_id = u.id WHERE title LIKE ? OR description LIKE ?");
+            stmt.setString(1, "%" + search + "%");
+            stmt.setString(2, "%" + search + "%");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving search results.", e);
         }
     }
 

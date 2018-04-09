@@ -23,8 +23,8 @@
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
             <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
-            <p>Created by: ${ad.username}</p>
+            <%--<p>${ad.description}</p>--%>
+            <%--<p>Created by: ${ad.username}</p>--%>
             <c:if test="${sessionScope.user.id == ad.userId}">
                 <input id="editButton" type="button" value="edit" class="btn btn-block btn-primary">
                 <form id="updateAdForm" class="hideForm" action="ads/update" method="post">

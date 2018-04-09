@@ -6,6 +6,12 @@
             <a class="navbar-brand" href="/ads">Ads</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
+            <form action="/ads" class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search ads..." name="search">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
             <c:if test="${sessionScope.user==null}">
                 <li><a href="/login">Login</a></li>
             </c:if>

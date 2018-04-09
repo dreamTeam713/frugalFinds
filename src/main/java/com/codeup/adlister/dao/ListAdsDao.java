@@ -19,6 +19,13 @@ public class ListAdsDao implements Ads {
     public void update(Ad ad) {
 
     }
+    public List<Ad> findByText(String search){
+        return null;
+    }
+    @Override
+    public List<Ad> findAdsByUser(Long userId) {
+        return null;
+    }
 
     public Long insert(Ad ad) {
         // make sure we have ads

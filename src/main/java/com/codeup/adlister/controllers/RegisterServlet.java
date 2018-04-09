@@ -40,6 +40,9 @@ public class RegisterServlet extends HttpServlet {
                     request.getParameter("email"),
                     request.getParameter("password")
             );
+            int numberOfRounds = 12;
+            String hash = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt(numberOfRounds));
+            newUser.setPassword(hash);
             DaoFactory.getUsersDao().insert(newUser);
             HttpSession session = request.getSession();
             session.setAttribute("user", newUser);
@@ -47,13 +50,5 @@ public class RegisterServlet extends HttpServlet {
         }else {
             response.sendRedirect("/register");
         }
-
-        // create and save a new user
-        User user = new User(username, email, password);
-        int numberOfRounds = 12;
-        String hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(numberOfRounds));
-        user.setPassword(hash);
-        DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/login");
     }
 }

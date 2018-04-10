@@ -14,13 +14,12 @@
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
-            <h2>${ad.title}</h2>
+                <h2 class="titleh2"><a href="/ads/singleAd?adId=${ad.id}">${ad.title}</a></h2>
             <%--<p>${ad.description}</p>--%>
             <%--<p>Created by: ${ad.username}</p>--%>
         </div>
     </c:forEach>
 </div>
-
 
 </body>
 </html>

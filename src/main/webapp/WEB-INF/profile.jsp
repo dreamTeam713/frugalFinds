@@ -5,21 +5,6 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
-    <style>
-        .hideForm{
-            display: none;
-        }
-        #adId{
-            display: none;
-        }
-        #descriptionParagraph{
-            max-height: 75px;
-            overflow-y: scroll;
-        }
-        #profileTitle{
-            display: inline;
-        }
-    </style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -28,11 +13,26 @@
         <h1>Welcome, ${sessionScope.user.username}! </h1>
         <div>
             <h3 id="profileTitle">Here are the ads you've created!</h3>
-            <form action="ads/create">
-            <button class="btn btn-default btn-sm pull-right">
+
+            <button id="createButton" class="btn btn-default btn-sm pull-right">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Ad
             </button>
-            </form>
+            <div id="createForm" class="container hideForm">
+                <h1>Create a new Ad</h1>
+                <form action="/ads/create" method="post">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input id="title" name="title" class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" class="form-control" type="text"></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-block btn-primary">
+                </form>
+            </div>
+
+
             <c:forEach var="ad" items="${userAds}">
                 <div class="col-md-6">
                     <h2>${ad.title}</h2>
@@ -81,6 +81,9 @@
                     alert("Delete Successful!");
                 });
             }
+        });
+        $('#createButton').click(function(){
+            $('#createForm').toggle();
         })
     </script>
 </body>

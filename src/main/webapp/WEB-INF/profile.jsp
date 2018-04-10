@@ -5,6 +5,15 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
+    <style>
+        body>.container{
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        #createButton{
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -12,11 +21,10 @@
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}! </h1>
         <div>
-            <h3 id="profileTitle">Here are the ads you've created!</h3>
-
-            <button id="createButton" class="btn btn-default btn-sm pull-right">
+            <h3>Here are the ads you've created!<button id="createButton" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Ad
-            </button>
+            </button></h3>
+
             <div id="createForm" class="container hideForm">
                 <h1>Create a new Ad</h1>
                 <form action="/ads/create" method="post">
@@ -32,11 +40,10 @@
                 </form>
             </div>
 
-
             <c:forEach var="ad" items="${userAds}">
                 <div class="col-md-6">
-                    <h2>${ad.title}</h2>
-                    <p id="descriptionParagraph">${ad.description}</p>
+                    <h2 class="adTitle">${ad.title}</h2>
+                    <p class="adDescription" id="descriptionParagraph">${ad.description}</p>
                     <c:if test="${sessionScope.user.id == ad.userId}">
                         <input id="editButton" type="button" value="edit" class="btn btn-primary editButton" data-adId="${ad.id}">
                         <input id="deleteButton" type="button" value="delete" class="btn btn-primary deleteButton" data-adid="${ad.id}">

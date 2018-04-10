@@ -6,6 +6,14 @@ public class Ad {
     private String title;
     private String description;
     private String username;
+    private String url;
+
+
+
+
+    public String getUrl() { return url; }
+
+    public void setUrl(String url) { this.url = url; }
 
     public String getUsername() {
         return username;
@@ -28,11 +36,20 @@ public class Ad {
         this.description = description;
         this.username = username;
     }
-
-    public Ad(long userId, String title, String description) {
+    public Ad(long id, long userId, String title, String description, String url, String username) {
+        this.id = id;
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.url = url;
+        this.username = username;
+    }
+
+    public Ad(long userId, String title, String description, String url) {
+        this.userId = userId;
+        this.title = title;
+        this.description = description;
+        this.url = url;
     }
 
     public long getId() {

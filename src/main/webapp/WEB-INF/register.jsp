@@ -19,21 +19,21 @@
         <form action="/register" method="post"
             name="registration_form" id="registration_form">
             <div class="form-group">
-                <c:if test="${sessionScope.username != null}" />
+                <c:if test="${sessionScope.username != null}" >
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text" value="${sessionScope.username}">
                 </c:if>
-                <c:if test="${sessionScope.username == null}" />
+                <c:if test="${sessionScope.username == null}" >
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
                 </c:if>
             </div>
             <div class="form-group">
-                <c:if test="${sessionScope.email != null}" />
+                <c:if test="${sessionScope.email != null}" >
                 <label for="email">Email</label>
                 <input id="email" name="email" class="form-control" type="text" value="${sessionScope.email}">
                 </c:if>
-                <c:if test="${sessionScope.email == null}" />
+                <c:if test="${sessionScope.email == null}" >
                 <label for="email">Email</label>
                 <input id="email" name="email" class="form-control" type="text">
                 </c:if>

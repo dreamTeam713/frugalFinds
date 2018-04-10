@@ -11,6 +11,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Single Ad" />
     </jsp:include>
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />

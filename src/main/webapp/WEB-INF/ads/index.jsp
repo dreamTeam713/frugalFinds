@@ -41,11 +41,5 @@
         </a>
     </div>
     </c:forEach>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-
-        });
-    </script>
 </body>
 </html>

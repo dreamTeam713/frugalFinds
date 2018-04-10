@@ -48,6 +48,8 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("user", newUser);
             response.sendRedirect("/profile");
         }else {
+            request.getSession().setAttribute("username", username);
+            request.getSession().setAttribute("email", email);
             response.sendRedirect("/register");
         }
     }

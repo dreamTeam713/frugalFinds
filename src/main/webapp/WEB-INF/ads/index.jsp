@@ -6,13 +6,8 @@
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
     <style>
-        .thumbnail {
-            padding: 0;
-        }
-        .created-by {
-            padding-right: 10px;
-            padding-left: 10px;
-            color: #d17581;
+        .item {
+            padding: 10px;
         }
     </style>
 </head>
@@ -21,7 +16,6 @@
 
 <div class="container">
     <h1>Here are all the ads!</h1>
-    <!-- Testing adding the images -->
     <c:forEach var="ad" items="${ads}">
     <div class="row">
         <a href="/ads/singleAd?adId=${ad.id}">
@@ -29,12 +23,9 @@
                 <div class="thumbnail">
                     <img src="http://placehold.it/320x150" alt="">
                     <div class="caption">
-                        <h4 class="pull-right">$24.99</h4>
-                        <h2 class="titleh2">${ad.title}</h2>
-                        <p>${ad.description}</p>
-                    </div>
-                    <div class="created-by">
-                        <p>Created by ${ad.username}</p>
+                        <h2 class="pull-right">$24.99</h2>
+                        <h1>${ad.title}</h1>
+                        <h2 class="created-by">Created by ${ad.username}</h2>
                     </div>
                 </div>
             </div>

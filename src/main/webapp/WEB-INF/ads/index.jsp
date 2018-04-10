@@ -16,8 +16,10 @@
 
 <div class="container">
     <h1>Here are all the ads!</h1>
-    <c:forEach var="ad" items="${ads}">
-    <div class="row">
+    <c:forEach var="ad" items="${ads}" varStatus="loop">
+    <c:if test="${loop.count} % 2 != 0">
+        <div class="row">
+    </c:if>
         <a href="/ads/singleAd?adId=${ad.id}">
             <div class="col-sm-4 col-lg-4 col-md-4 item"> <!-- should be one for each item -->
                 <div class="thumbnail">
@@ -31,6 +33,9 @@
             </div>
         </a>
     </div>
+    <c:if test="${loop.count} % 2 == 0">
+    </div>
+    </c:if>
     </c:forEach>
 </body>
 </html>

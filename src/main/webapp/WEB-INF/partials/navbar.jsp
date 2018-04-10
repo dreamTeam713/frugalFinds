@@ -13,6 +13,7 @@
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
             <c:if test="${sessionScope.user==null}">
+                <li><a href="/register">Register</a></li>
                 <li><a href="/login">Login</a></li>
             </c:if>
             <c:if test="${sessionScope.user!=null}">

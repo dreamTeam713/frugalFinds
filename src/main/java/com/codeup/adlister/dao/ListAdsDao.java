@@ -21,6 +21,7 @@ public class ListAdsDao implements Ads {
     public void delete(Long adId){
 
     }
+    public Ad findSingleAd(Long adId){return null;}
     public List<Ad> findByText(String search){
         return null;
     }

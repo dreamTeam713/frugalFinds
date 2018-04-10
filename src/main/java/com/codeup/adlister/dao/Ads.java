@@ -13,4 +13,5 @@ public interface Ads {
     void delete(Long adId);
     List<Ad> findAdsByUser(Long userId);
     List<Ad> findByText(String search);
+    Ad findSingleAd(Long adId);
 }

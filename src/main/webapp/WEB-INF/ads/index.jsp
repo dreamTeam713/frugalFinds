@@ -17,24 +17,23 @@
 <div class="container">
     <h1>Here are all the ads!</h1>
     <c:forEach var="ad" items="${ads}" varStatus="loop">
-    <c:if test="${loop.count} % 2 != 0">
+    <c:if test="${loop.count} == 1 || ${loop.count} % 2 != 0">
         <div class="row">
     </c:if>
         <a href="/ads/singleAd?adId=${ad.id}">
             <div class="col-sm-4 col-lg-4 col-md-4 item"> <!-- should be one for each item -->
                 <div class="thumbnail">
+                    <h1 style="text-align: center">${ad.title}</h1>
                     <img src="http://placehold.it/320x150" alt="">
                     <div class="caption">
                         <h2 class="pull-right">$24.99</h2>
-                        <h1>${ad.title}</h1>
-                        <h2 class="created-by">Created by ${ad.username}</h2>
+                        <h3 class="created-by">Created by ${ad.username}</h3>
                     </div>
                 </div>
             </div>
         </a>
-    </div>
     <c:if test="${loop.count} % 2 == 0">
-    </div>
+    </div> <!-- end of row -->
     </c:if>
     </c:forEach>
 </body>

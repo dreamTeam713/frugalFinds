@@ -22,12 +22,19 @@ public class CreateAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String url = "";
         User newUser =(User) request.getSession().getAttribute("user");
+        if (request.getParameter("url").isEmpty()) {
+            url = "https://is3-ssl.mzstatic.com/image/thumb/Purple30/v4/1f/a4/83/1fa4837d-7775-681c-2815-e9c36c9c7285/mzm.cqfnvudd.png/1200x630bb.jpg";
+        } else {
+            url = request.getParameter("url");
+        }
+        System.out.println(url);
         Ad ad = new Ad(
             newUser.getId(),
             request.getParameter("title"),
             request.getParameter("description"),
-            request.getParameter("url")
+            url
         );
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/profile");

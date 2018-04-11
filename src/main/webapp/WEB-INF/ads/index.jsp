@@ -17,7 +17,7 @@
 <div class="container">
     <h1>Here are all the ads!</h1>
     <c:forEach var="ad" items="${ads}" varStatus="loop">
-    <c:if test="${loop.count} % 2 != 0">
+    <c:if test="${loop.count} == 1 || ${loop.count} % 2 != 0">
         <div class="row">
     </c:if>
         <a href="/ads/singleAd?adId=${ad.id}">
@@ -32,9 +32,8 @@
                 </div>
             </div>
         </a>
-    </div>
     <c:if test="${loop.count} % 2 == 0">
-    </div>
+    </div> <!-- end of row -->
     </c:if>
     </c:forEach>
 </body>

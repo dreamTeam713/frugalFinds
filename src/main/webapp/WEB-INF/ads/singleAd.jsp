@@ -21,7 +21,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <div class="thumbnail">
-            <img class="img-responsive" src="http://placehold.it/800x300" alt="">
+            <img class="img-responsive" src="${ad.url}" alt="">
             <div class="item">
                 <h2 class="pull-right">$24.99</h2>
                 <h1><a href="#">${ad.title}</a></h1>

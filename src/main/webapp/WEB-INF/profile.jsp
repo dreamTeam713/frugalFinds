@@ -50,7 +50,7 @@
                         <input type="text" class="form-control" id="exampleInputFile" name="url">
                     </div>
                     <%--<input type="submit" class="btn btn-block btn-primary">--%>
-                    <button class="btn btn-block btn-primary">Submit</button>
+                    <button id="submitNewAd" class="btn btn-block btn-primary" disabled>Submit</button>
                 </form>
             </div>
 
@@ -106,11 +106,19 @@
         $('#createButton').click(function(){
             $('#createForm').toggle();
         })
-        // $('#priceInput').keyup(function(){
-        //     if(!(/^\d*(\.\d+)?$/).test($('#priceInput').val())){
-        //         $('#priceInput').val($('#priceInput').val().match(/\d*(\.\d+)?/g).join(''))
-        //     }
-        // })
+        $('#priceInput').keyup(function(){
+            if(!(/^\d*(\.)?\d*$/).test($('#priceInput').val())){
+                $('#priceInput').val($('#priceInput').val().match(/\d*(\.\d+)?/g).join(''))
+            }
+        })
+        $('#title1, #description1, #priceInput').keyup(function () {
+            if($('#title1').val() != '' && $('#description1').val()!='' && $('#priceInput').val() != ''){
+                $('#submitNewAd').prop('disabled',false)
+            }else {
+                $('#submitNewAd').prop('disabled',true)
+            }
+        })
+
 
     </script>
 </body>

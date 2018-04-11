@@ -13,6 +13,9 @@
         #createButton{
             margin-left: 10px;
         }
+        .form-control,.btn-block{
+            width: 50%;
+        }
     </style>
 </head>
 <body>
@@ -36,11 +39,18 @@
                         <label for="description1">Description</label>
                         <textarea id="description1" name="description" class="form-control" type="text"></textarea>
                     </div>
+                    <label for="priceInput">Price</label>
+                    <div class="input-group" style="width: 31px">
+                        <div class="input-group-addon">$</div>
+                        <input type="text" name="price" class="form-control" id="priceInput" placeholder="Amount" style="width: 100px">
+                    </div>
+
                     <div class="form-group">
                         <label for="exampleInputFile">Pic URL</label>
                         <input type="text" class="form-control" id="exampleInputFile" name="url">
                     </div>
-                    <input type="submit" class="btn btn-block btn-primary">
+                    <%--<input type="submit" class="btn btn-block btn-primary">--%>
+                    <button class="btn btn-block btn-primary">Submit</button>
                 </form>
             </div>
 
@@ -96,6 +106,12 @@
         $('#createButton').click(function(){
             $('#createForm').toggle();
         })
+        // $('#priceInput').keyup(function(){
+        //     if(!(/^\d*(\.\d+)?$/).test($('#priceInput').val())){
+        //         $('#priceInput').val($('#priceInput').val().match(/\d*(\.\d+)?/g).join(''))
+        //     }
+        // })
+
     </script>
 </body>
 </html>

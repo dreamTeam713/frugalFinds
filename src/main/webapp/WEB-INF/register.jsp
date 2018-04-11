@@ -53,10 +53,7 @@
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     <script>
         $(document).ready(function() {
-            console.log('JQuery is ready, let\'s make sure the button will work after 3 keys');
-            // $('#register').attr("disabled","disabled");
             $('#username').focus();
-            $('#register').attr("disabled", "disabled");
             $('#registration_form').validate({
                 rules: {
                     username: {
@@ -97,7 +94,7 @@
                     }
                 }
             });
-            $('input').on('blur keyup', function() {
+            $('input').on('blur', function() {
                 if ($("#registration_form").valid()) {
                     $('#register').prop('disabled', false);
                 } else {

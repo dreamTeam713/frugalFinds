@@ -61,7 +61,7 @@
                 rules: {
                     username: {
                         required: true,
-                        minlength: 8
+                        minlength: 3 //change back to 8
                     },
                     email: {
                         required: true,
@@ -69,11 +69,11 @@
                     },
                     password: {
                         required: true,
-                        minlength: 8
+                        minlength: 3 // change back to 8
                     },
                     confirm_password: {
                         required: true,
-                        minlength: 8,
+                        minlength: 3,
                         equalTo: '#password'
                     }
                 },

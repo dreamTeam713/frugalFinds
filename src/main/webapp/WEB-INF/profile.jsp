@@ -18,6 +18,9 @@
             margin-left: 25px;
             margin-right: 25px;
         }
+        .container {
+            margin-outside: 10%;
+        }
     </style>
 </head>
 <body>
@@ -70,6 +73,10 @@
                                 <div class="input-group-addon">$ </div>
                                 <input type="text" name="price" class="form-control" id="editPrice" placeholder="Amount" style="width: 100px">
                             </div>
+                            <div id="currentPic" class="form-group hideForm">
+                                <p>Current Image</p>
+                                <img src="test" alt="" style="max-height: 100px"></img>
+                            </div>
                             <div class="form-group">
                                 <label for="photo">Upload an image</label>
                                 <input type="file" name="photo" id="photo" />
@@ -106,6 +113,7 @@
             if(button.data("type") === "create"){
                 $('#modalForm').attr('action', "/ads/create");
                 $('#myModalLabel').text("Create New Ad!");
+                $('#currentPic').addClass('hideForm');
                 $('#editTitle, #editDescription, #editPrice, #editUrl').val("");
 
             }else{
@@ -119,7 +127,9 @@
                     $('#editTitle').val(json.title);
                     $('#editDescription').val(json.description);
                     $('#editPrice').val(json.price);
-                    $('#editUrl').val(json.url);
+                    $('#currentPic').removeClass('hideForm');
+                    $('#currentPic > img').attr('src',json.url);
+                    // $('#editUrl').val(json.url);
                 })
             }
 

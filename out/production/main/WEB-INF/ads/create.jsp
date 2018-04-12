@@ -9,8 +9,7 @@
 <body>
     <div class="container">
         <h1>Create a new Ad</h1>
-        <form action="/ads/create" method="post"
-            enctype="multipart/form-data">
+        <form action="/ads/create" method="post">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
@@ -19,17 +18,8 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
-            <div class="form-group">
-                <label for="photo">Upload an image</label>
-                <input type="file" name="photo" id="photo" />
-            </div>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
-    <script>
-        var footer = document.getElementById('footer');
-        footer.classList.add('footer');
-    </script>
-    <jsp:include page="/WEB-INF/partials/footer.jsp" />
 </body>
 </html>

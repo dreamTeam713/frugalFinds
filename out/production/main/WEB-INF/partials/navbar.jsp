@@ -10,14 +10,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="/">frugalFinds</a>
+            <a class="navbar-brand topnav" href="#">frugalFinds</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <form action="/ads" class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input id="search" type="text" class="form-control" placeholder="Search ads..." name="search">
+                        <input type="text" class="form-control" placeholder="Search ads..." name="search">
                     </div>
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>

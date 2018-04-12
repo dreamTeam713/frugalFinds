@@ -56,6 +56,8 @@
                         <form id="modalForm" action="/ads/create" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input id="editadId" name="adId" class="form-control hideForm" type="text">
+                                <input id="editUrl" type="text" name="url" class="form-control hideForm">
+                                <input id="hasPic" name="addedPicture" class="hideForm" type="text">
                             </div>
                             <div class="form-group">
                                 <input id="userId" name="userId" value="${sessionScope.user.id}" class="form-control hideForm" type="text">
@@ -75,7 +77,7 @@
                             </div>
                             <div id="currentPic" class="form-group hideForm">
                                 <p>Current Image</p>
-                                <img src="test" alt="" style="max-height: 100px"></img>
+                                <img src="" alt="" style="max-height: 100px"></img>
                             </div>
                             <div class="form-group">
                                 <label for="photo">Upload an image</label>
@@ -87,7 +89,7 @@
                             <%--</div>--%>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-default btn-primary">
+                                <input id="submitForm" type="submit" class="btn btn-default btn-primary">
                             </div>
                         </form>
                     </div>
@@ -105,8 +107,14 @@
         var footer = document.getElementById('footer');
         footer.classList.add('footer');
         footer.classList.add('navbar-fixed-bottom');
-      
 
+        $('#submitForm').click(function () {
+            if($('#photo').val() == ""){
+                $('#hasPic').val(0);
+            }else{
+                $('#hasPic').val(1);
+            }
+        });
 
         $('#myModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
@@ -129,7 +137,7 @@
                     $('#editPrice').val(json.price);
                     $('#currentPic').removeClass('hideForm');
                     $('#currentPic > img').attr('src',json.url);
-                    // $('#editUrl').val(json.url);
+                    $('#editUrl').val(json.url);
                 })
             }
 

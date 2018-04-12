@@ -13,8 +13,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "editServlet", urlPatterns = "/ads/editAds")
+
 public class editServlet extends HttpServlet {
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Long id = Long.parseLong(request.getParameter("adId"));
         Ad curAd = DaoFactory.getAdsDao().findSingleAd(id);
 //        response.setContentType("application/json");

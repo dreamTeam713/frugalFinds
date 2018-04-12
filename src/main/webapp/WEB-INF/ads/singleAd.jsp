@@ -30,5 +30,10 @@
             </div>
         </div>
     </div>
+<jsp:include page="/WEB-INF/partials/footer.jsp" />
+<script>
+    var footer = document.getElementById('footer');
+    footer.classList.add('footer');
+</script>
 </body>
 </html>

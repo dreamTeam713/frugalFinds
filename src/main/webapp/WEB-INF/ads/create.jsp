@@ -21,5 +21,10 @@
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
+    <script>
+        var footer = document.getElementById('footer');
+        footer.classList.add('footer');
+    </script>
+    <jsp:include page="/WEB-INF/partials/footer.jsp" />
 </body>
 </html>

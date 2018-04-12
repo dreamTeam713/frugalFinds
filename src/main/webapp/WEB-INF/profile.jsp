@@ -6,10 +6,11 @@
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
     <style>
-        body>.container{
-            margin-left: 10%;
-            margin-right: 10%;
-        }
+        <%--commented out in order to give the site a uniform appearance for now --%>
+        /*body>.container{*/
+            /*margin-left: 10%;*/
+            /*margin-right: 10%;*/
+        /*}*/
         #createButton{
             margin-left: 10px;
         }
@@ -17,7 +18,6 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}! </h1>
         <div>
@@ -72,10 +72,12 @@
         </div>
 
     </div>
-
+    <jsp:include page="partials/footer.jsp" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
-
+        var footer = document.getElementById('footer');
+        footer.classList.add('footer');
+        footer.classList.add('navbar-fixed-bottom');
         $('.editButton').click(function (e) {
             e.preventDefault();
             $(this).parent().find('form').toggle()

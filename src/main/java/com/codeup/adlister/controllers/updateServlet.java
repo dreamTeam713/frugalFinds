@@ -19,13 +19,15 @@ public class updateServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User curUser = (User) request.getSession().getAttribute("user");
-        long adId = Long.parseLong(request.getParameter("adId"));
-        long userId = curUser.getId();
-        String title = request.getParameter("title");
-        String description = request.getParameter("description");
-        Ad ad = new Ad(adId, userId, title, description);
+        Ad ad = new Ad(
+                Long.parseLong(request.getParameter("adId")),
+                Long.parseLong(request.getParameter("userId")),
+                request.getParameter("title"),
+                request.getParameter("description"),
+                Double.parseDouble(request.getParameter("price")),
+                request.getParameter("url")
+        );
         DaoFactory.getAdsDao().update(ad);
-        response.sendRedirect("/ads");
+        response.sendRedirect("/profile");
     }
 }

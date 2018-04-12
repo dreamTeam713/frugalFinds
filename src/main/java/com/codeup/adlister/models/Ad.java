@@ -5,11 +5,13 @@ public class Ad {
     private long userId;
     private String title;
     private String description;
-    private String username;
+    private double price;
     private String url;
+    private String username;
 
 
-
+    public void setPrice(Long price){this.price = price;}
+    public double getPrice(){return price;}
 
     public String getUrl() { return url; }
 
@@ -36,19 +38,21 @@ public class Ad {
         this.description = description;
         this.username = username;
     }
-    public Ad(long id, long userId, String title, String description, String url, String username) {
+    public Ad(long id, long userId, String title, String description,Double price ,String url, String username) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.price = price;
         this.url = url;
         this.username = username;
     }
 
-    public Ad(long userId, String title, String description, String url) {
+    public Ad(long userId, String title, String description,Double price, String url) {
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.price = price;
         this.url = url;
     }
 

@@ -16,15 +16,15 @@ public class DisplayImage extends HttpServlet {
 //        //Only accept mappings as src="/images/whatever.jpg", even if web.xml has other mappings to this servlet.
         if(!request.getRequestURI().startsWith("/resources/img/"))
             return;
-        System.out.println("From DisplayImage: " + filePath);
+//        System.out.println("From DisplayImage: " + filePath);
         String uri = request.getRequestURI();
-        System.out.println("uri is " + uri);
+//        System.out.println("uri is " + uri);
         //get the image name, or even directory and image, e.g. /images/music/beethoven.jpg:
         File file = new File(request.getServletContext().getRealPath("/resources/img"));
         if(file.exists()){
-            System.out.println("file exists");
+//            System.out.println("file exists");
         }
-        System.out.println("\nFetching " + file.getName() + " from " + filePath);
+//        System.out.println("\nFetching " + file.getName() + " from " + filePath);
         response.setContentType("image/jpeg");
         //as far as I know, this works for PNG as well. You might want to change the mapping to /images/*.jpg if it's giving problems
 

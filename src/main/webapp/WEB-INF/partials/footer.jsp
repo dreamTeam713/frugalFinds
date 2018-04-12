@@ -21,8 +21,8 @@
                     <li>
                         <a href="#contact">Contact</a>
                     </li>
+                    <li class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</li>
                 </ul>
-                <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
             </div>
         </div>
     </div>

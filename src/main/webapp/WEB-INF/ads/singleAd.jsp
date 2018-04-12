@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -36,7 +37,8 @@
             </c:choose>
             <%--<img class="img-responsive" src="${ad.url}" alt="">--%>
             <div class="item">
-                <h2 class="pull-right">$${ad.price}</h2>
+                <h2 class="pull-right">$<fmt:formatNumber type = "number"
+                                                          maxFractionDigits = "2" value = "${ad.price}" /></h2>
                 <h1><a href="#">${ad.title}</a></h1>
                 <h2>${ad.description}</h2>
                 <h2>Created by ${ad.username}</h2>

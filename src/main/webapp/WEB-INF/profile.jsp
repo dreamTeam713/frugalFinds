@@ -18,6 +18,9 @@
             margin-left: 25px;
             margin-right: 25px;
         }
+        .container {
+            margin-outside: 10%;
+        }
     </style>
 </head>
 <body>
@@ -53,6 +56,8 @@
                         <form id="modalForm" action="/ads/create" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input id="editadId" name="adId" class="form-control hideForm" type="text">
+                                <input id="editUrl" type="text" name="url" class="form-control hideForm">
+                                <input id="hasPic" name="addedPicture" class="hideForm" type="text">
                             </div>
                             <div class="form-group">
                                 <input id="userId" name="userId" value="${sessionScope.user.id}" class="form-control hideForm" type="text">
@@ -70,6 +75,10 @@
                                 <div class="input-group-addon">$ </div>
                                 <input type="text" name="price" class="form-control" id="editPrice" placeholder="Amount" style="width: 100px">
                             </div>
+                            <div id="currentPic" class="form-group hideForm">
+                                <p>Current Image</p>
+                                <img src="" alt="" style="max-height: 100px"></img>
+                            </div>
                             <div class="form-group">
                                 <label for="photo">Upload an image</label>
                                 <input type="file" name="photo" id="photo" />
@@ -80,7 +89,7 @@
                             <%--</div>--%>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-default btn-primary">
+                                <input id="submitForm" type="submit" class="btn btn-default btn-primary">
                             </div>
                         </form>
                     </div>
@@ -98,14 +107,21 @@
         var footer = document.getElementById('footer');
         footer.classList.add('footer');
         footer.classList.add('navbar-fixed-bottom');
-      
 
+        $('#submitForm').click(function () {
+            if($('#photo').val() == ""){
+                $('#hasPic').val(0);
+            }else{
+                $('#hasPic').val(1);
+            }
+        });
 
         $('#myModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
             if(button.data("type") === "create"){
                 $('#modalForm').attr('action', "/ads/create");
                 $('#myModalLabel').text("Create New Ad!");
+                $('#currentPic').addClass('hideForm');
                 $('#editTitle, #editDescription, #editPrice, #editUrl').val("");
 
             }else{
@@ -119,6 +135,8 @@
                     $('#editTitle').val(json.title);
                     $('#editDescription').val(json.description);
                     $('#editPrice').val(json.price);
+                    $('#currentPic').removeClass('hideForm');
+                    $('#currentPic > img').attr('src',json.url);
                     $('#editUrl').val(json.url);
                 })
             }

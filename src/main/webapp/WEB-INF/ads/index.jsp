@@ -43,7 +43,7 @@
     </c:if>
     </c:forEach>
 </div>
-    <jsp:include page="/WEB-INF/partials/footer.jsp" />
+    <%--<jsp:include page="/WEB-INF/partials/footer.jsp" />--%>
     <script>
         var footer = document.getElementById('footer');
         footer.classList.add('footer');

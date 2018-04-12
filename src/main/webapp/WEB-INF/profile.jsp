@@ -35,7 +35,7 @@
             <c:forEach var="ad" items="${userAds}">
                 <div class="col-md-6">
                     <h2 class="adTitle">${ad.title}</h2>
-                    <p class="adDescription" id="descriptionParagraph">${ad.description}</p>
+                    <h3 class="adDescription" id="descriptionParagraph">${ad.description}</h3>
                     <c:if test="${sessionScope.user.id == ad.userId}">
                         <input id="editButton" type="button" value="edit" class="btn btn-primary editButton" data-adid="${ad.id}" data-target="#myModal" data-toggle="modal">
                         <input id="deleteButton" type="button" value="delete" class="btn btn-primary deleteButton" data-adid="${ad.id}">

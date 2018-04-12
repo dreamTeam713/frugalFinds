@@ -49,7 +49,8 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Edit your Ad!</h4>
                         </div>
-                        <form id="modalForm" class="updateAdForm" action="ads/update" method="post">
+                        <%--<form id="modalForm" class="updateAdForm" action="ads/update" method="post">--%>
+                        <form id="modalForm" action="/ads/create" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input id="editadId" name="adId" class="form-control hideForm" type="text">
                             </div>
@@ -66,16 +67,20 @@
                             </div>
                             <label for="editPrice">Price</label>
                             <div class="input-group" style="width: 31px">
-                                <div class="input-group-addon">$</div>
+                                <div class="input-group-addon">$ </div>
                                 <input type="text" name="price" class="form-control" id="editPrice" placeholder="Amount" style="width: 100px">
                             </div>
                             <div class="form-group">
-                                <label for="editUrl">Pic URL</label>
-                                <input type="text" class="form-control" id="editUrl" name="url">
+                                <label for="photo">Upload an image</label>
+                                <input type="file" name="photo" id="photo" />
                             </div>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="editUrl">Pic URL</label>--%>
+                                <%--<input type="text" class="form-control" id="editUrl" name="url">--%>
+                            <%--</div>--%>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+                                <input type="submit" class="btn btn-block btn-primary">
                             </div>
                         </form>
                     </div>
@@ -98,7 +103,7 @@
 
         $('#myModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
-            if(button.data("type") == "create"){
+            if(button.data("type") === "create"){
                 $('#modalForm').attr('action', "/ads/create");
                 $('#myModalLabel').text("Create New Ad!");
                 $('#editTitle, #editDescription, #editPrice, #editUrl').val("");

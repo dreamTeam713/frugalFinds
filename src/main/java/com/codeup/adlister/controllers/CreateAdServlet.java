@@ -41,8 +41,9 @@ public class CreateAdServlet extends HttpServlet {
         String url = "";
         User newUser = (User) request.getSession().getAttribute("user");
         if (request.getPart("photo") == null) {
-          if(request.getParameter("url") == null)
-            url = "https://is3-ssl.mzstatic.com/image/thumb/Purple30/v4/1f/a4/83/1fa4837d-7775-681c-2815-e9c36c9c7285/mzm.cqfnvudd.png/1200x630bb.jpg";
+            if (request.getParameter("url") == null) {
+                url = "https://is3-ssl.mzstatic.com/image/thumb/Purple30/v4/1f/a4/83/1fa4837d-7775-681c-2815-e9c36c9c7285/mzm.cqfnvudd.png/1200x630bb.jpg";
+            }
         } else {
             String appPath = request.getServletContext().getRealPath("");
             String savePath = appPath + SAVE_DIR;
@@ -55,13 +56,11 @@ public class CreateAdServlet extends HttpServlet {
             }
             filename = savePath + File.separator + extractFileName(part);
             url = SAVE_DIR + File.separator + extractFileName(part);
-            System.out.println("Adding the reference to: " + imagePointer + " for the image: " + filename);
+            System.out.println("Adding the reference to: " + url + " for the image: " + filename);
             part.write(filename);
             System.out.println(filename + " was saved to server for " + newUser.getUsername());
             System.out.println("real path: " + request.getServletContext().getRealPath("/resources/img"));
         }
-      
-     
         Ad ad = new Ad(
             newUser.getId(),
             request.getParameter("title"),

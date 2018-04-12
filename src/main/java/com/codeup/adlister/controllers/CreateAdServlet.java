@@ -55,7 +55,7 @@ public class CreateAdServlet extends HttpServlet {
             }
             filename = savePath + File.separator + extractFileName(part);
             url = SAVE_DIR + File.separator + extractFileName(part);
-            System.out.println("Adding the reference to: " + imagePointer + " for the image: " + filename);
+            System.out.println("Adding the reference to: " + url + " for the image: " + filename);
             part.write(filename);
             System.out.println(filename + " was saved to server for " + newUser.getUsername());
             System.out.println("real path: " + request.getServletContext().getRealPath("/resources/img"));

@@ -76,11 +76,13 @@ public class MySQLAdsDao implements Ads {
     @Override
     public void update(Ad ad){
         try {
-            String updateQuery = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+            String updateQuery = "UPDATE ads SET title = ?, description = ?, price = ?, url = ? WHERE id = ?";
             PreparedStatement ps = connection.prepareStatement(updateQuery);
             ps.setString(1,ad.getTitle());
             ps.setString(2,ad.getDescription());
-            ps.setLong(3,ad.getId());
+            ps.setDouble(3,ad.getPrice());
+            ps.setString(4,ad.getUrl());
+            ps.setLong(5,ad.getId());
             ps.executeUpdate();
         }catch (SQLException e){
             throw new RuntimeException("Error updating ad.", e);
@@ -100,12 +102,13 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Long insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(user_id, title, description,url) VALUES (?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO ads(user_id, title, description,price,url) VALUES (?, ?,?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad.getUserId());
             stmt.setString(2, ad.getTitle());
             stmt.setString(3, ad.getDescription());
-            stmt.setString(4,ad.getUrl());
+            stmt.setDouble(4,ad.getPrice());
+            stmt.setString(5,ad.getUrl());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -121,6 +124,7 @@ public class MySQLAdsDao implements Ads {
             rs.getLong("user_id"),
             rs.getString("title"),
             rs.getString("description"),
+            rs.getDouble("price"),
             rs.getString("url"),
             rs.getString("username")
         );

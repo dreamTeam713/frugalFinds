@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -29,7 +31,8 @@
                     <h1 style="text-align: center">${ad.title}</h1>
                     <img src="${ad.url}" alt="">
                     <div class="caption">
-                        <h2 class="pull-right">$24.99</h2>
+                        <h2 class="pull-right">$<fmt:formatNumber type = "number"
+                                                                  maxFractionDigits = "2" value = "${ad.price}" /></h2>
                         <h3 class="created-by">Created by ${ad.username}</h3>
                     </div>
                 </div>
@@ -39,5 +42,12 @@
     </div> <!-- end of row -->
     </c:if>
     </c:forEach>
+</div>
+    <jsp:include page="/WEB-INF/partials/footer.jsp" />
+    <script>
+        var footer = document.getElementById('footer');
+        footer.classList.add('footer');
+        footer.classList.add('navbar-fixed-bottom');
+    </script>
 </body>
 </html>

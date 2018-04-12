@@ -10,11 +10,25 @@
             float: none;
             color: red;
         }
+        .absolute-center {
+            margin: auto;
+            position: absolute;
+            top: -45%; left: 0; bottom: 0; right: 0;
+        }
+
+        .absolute-center.is-responsive {
+            width: 50%;
+            height: 40%;
+            min-width: 200px;
+            max-width: 400px;
+            padding: 40px;
+        }
     </style>
 </head>
 <body>
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
+        <div class="absolute-center is-responsive">
         <h1>Please fill in your information.</h1>
         <form action="/register" method="post"
             name="registration_form" id="registration_form">
@@ -49,9 +63,14 @@
             <input id="register" type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
+    <jsp:include page="partials/footer.jsp" />
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     <script>
+        var footer = document.getElementById('footer');
+        footer.classList.add('footer');
+        footer.classList.add('navbar-fixed-bottom');
         $(document).ready(function() {
             $('#username').focus();
             $('#registration_form').validate({

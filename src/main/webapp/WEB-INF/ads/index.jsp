@@ -42,5 +42,12 @@
     </div> <!-- end of row -->
     </c:if>
     </c:forEach>
+</div>
+    <jsp:include page="/WEB-INF/partials/footer.jsp" />
+    <script>
+        var footer = document.getElementById('footer');
+        footer.classList.add('footer');
+        footer.classList.add('navbar-fixed-bottom');
+    </script>
 </body>
 </html>

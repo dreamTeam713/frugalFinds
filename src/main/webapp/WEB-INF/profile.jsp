@@ -79,8 +79,8 @@
                                 <%--<input type="text" class="form-control" id="editUrl" name="url">--%>
                             <%--</div>--%>
                             <div class="modal-footer">
-                                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
-                                <input type="submit" class="btn btn-block btn-primary">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-default btn-primary">
                             </div>
                         </form>
                     </div>

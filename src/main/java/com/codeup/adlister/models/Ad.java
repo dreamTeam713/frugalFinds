@@ -25,11 +25,11 @@ public class Ad {
         this.username = username;
     }
 
-    public Ad(long id, long userId, String title, String description) {
+    public Ad(long id, String title, String description, double price) {
         this.id = id;
-        this.userId = userId;
         this.title = title;
         this.description = description;
+        this.price = price;
     }
     public Ad(long id, long userId, String title, String description, String username) {
         this.id = id;
@@ -49,6 +49,14 @@ public class Ad {
     }
 
     public Ad(long userId, String title, String description,Double price, String url) {
+        this.userId = userId;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.url = url;
+    }
+    public Ad(long id, long userId, String title, String description,Double price, String url) {
+        this.id = id;
         this.userId = userId;
         this.title = title;
         this.description = description;

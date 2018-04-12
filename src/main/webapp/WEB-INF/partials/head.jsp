@@ -7,7 +7,6 @@
     }
     #adId{
         display: none;
-
     }
     #descriptionParagraph{
         max-height: 75px;

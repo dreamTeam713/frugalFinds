@@ -76,11 +76,13 @@ public class MySQLAdsDao implements Ads {
     @Override
     public void update(Ad ad){
         try {
-            String updateQuery = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+            String updateQuery = "UPDATE ads SET title = ?, description = ?, price = ?, url = ? WHERE id = ?";
             PreparedStatement ps = connection.prepareStatement(updateQuery);
             ps.setString(1,ad.getTitle());
             ps.setString(2,ad.getDescription());
-            ps.setLong(3,ad.getId());
+            ps.setDouble(3,ad.getPrice());
+            ps.setString(4,ad.getUrl());
+            ps.setLong(5,ad.getId());
             ps.executeUpdate();
         }catch (SQLException e){
             throw new RuntimeException("Error updating ad.", e);

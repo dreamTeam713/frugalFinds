@@ -37,8 +37,7 @@
             </c:choose>
             <%--<img class="img-responsive" src="${ad.url}" alt="">--%>
             <div class="item">
-                <h2 class="pull-right">$<fmt:formatNumber type = "number"
-                                                          maxFractionDigits = "2" value = "${ad.price}" /></h2>
+                <h2 class="pull-right">$<fmt:formatNumber type = "number" maxFractionDigits = "2" value = "${ad.price}" /></h2>
                 <h1><a href="#">${ad.title}</a></h1>
                 <h2>${ad.description}</h2>
                 <h2>Created by ${ad.username}</h2>

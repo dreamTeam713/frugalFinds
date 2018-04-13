@@ -98,7 +98,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <input id="submitForm" type="submit" class="btn btn-default btn-primary">
+                                <input id="submitForm" type="submit" class="btn btn-default btn-primary" disabled>
                             </div>
                         </form>
                     </div>
@@ -174,11 +174,11 @@
             }
         });
 
-        $('#title1, #description1, #priceInput').keyup(function () {
-            if($('#title1').val() != '' && $('#description1').val()!='' && $('#priceInput').val() != ''){
-                $('#submitNewAd').prop('disabled',false)
+        $('#editTitle, #editDescription, #editPrice').keyup(function () {
+            if($('#editTitle').val() != '' && $('#editDescription').val()!='' && $('#editPrice').val() != ''){
+                $('#submitForm').prop('disabled',false)
             }else {
-                $('#submitNewAd').prop('disabled',true)
+                $('#submitForm').prop('disabled',true)
             }
         });
 

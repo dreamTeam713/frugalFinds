@@ -1,26 +1,27 @@
 <!-- separate footer for changing the footer on all pages later on -->
 
 <!-- Footer -->
+<div class="push"></div>
 <footer id="footer" class="footer">
     <div class="container">
         <div class="col-lg-12">
             <ul class="list-inline">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li class="footer-menu-divider">&sdot;</li>
                 <li>
-                    <a href="#about">About</a>
+                    <a href="/ads">View Ads</a>
                 </li>
                 <li class="footer-menu-divider">&sdot;</li>
                 <li>
-                    <a href="#services">Services</a>
+                    <a href="/register">Register</a>
                 </li>
                 <li class="footer-menu-divider">&sdot;</li>
                 <li>
-                    <a href="#contact">Contact</a>
+                    <a href="/login">Login</a>
                 </li>
-                <li class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</li>
+                <li class="copyright text-muted small pull-right">Copyright &copy; 2018 Chanel Rodriguez and Cooper Hanke</li>
             </ul>
         </div>
     </div>

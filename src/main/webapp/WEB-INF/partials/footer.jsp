@@ -1,6 +1,8 @@
 <!-- separate footer for changing the footer on all pages later on -->
 
 <!-- Footer -->
+
+
 <div class="push"></div>
 <footer id="footer" class="footer">
     <div class="container">

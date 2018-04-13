@@ -95,6 +95,7 @@
                             <div class="form-group">
                                 <label for="photo">Upload an image</label>
                                 <input type="file" name="photo" id="photo" accept="Image/*" />
+                                <span id="imageError" class="hideForm" style="color: red">File must be an image</span>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -117,7 +118,8 @@
         footer.classList.add('footer');
         footer.classList.add('navbar-fixed-bottom');
 
-        $('#submitForm').click(function () {
+
+        $('#submitForm').click(function (e) {
             if($('#photo').val() == ""){
                 $('#hasPic').val(0);
             }else{
@@ -126,6 +128,7 @@
         });
 
         $('#myModal').on('show.bs.modal', function (event) {
+            $('#imageError').addClass('hideForm');
             var button = $(event.relatedTarget); // Button that triggered the modal
             if(button.data("type") === "create"){
                 $('#modalForm').attr('action', "/ads/create");
@@ -181,6 +184,19 @@
                 $('#submitForm').prop('disabled',true)
             }
         });
+        
+        // $('#photo').select(function () {
+        //         var index = $('#photo').val().indexOf(".");
+        //         var ext = $('#photo').val().substring(index);
+        //         var status = $('#submitForm').prop('disabled');
+        //         if((ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".gif" || ext == ".webp") && status != false) {
+        //             $('#imageError').addClass('hideForm');
+        //         }else{
+        //             $('#imageError').removeClass('hideForm');
+        //             $('#submitForm').prop('disabled',true)
+        //         }
+        //      })
+
 
 
     </script>

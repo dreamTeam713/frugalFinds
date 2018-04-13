@@ -13,6 +13,7 @@ import java.io.IOException;
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("search") != null) {
+            request.setAttribute("searchTerm", request.getParameter("search"));
             request.setAttribute("ads", DaoFactory.getAdsDao().findByText(request.getParameter("search")));
         } else {
             request.setAttribute("ads", DaoFactory.getAdsDao().all());

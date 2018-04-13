@@ -1,18 +1,3 @@
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-    <%--<jsp:include page="/WEB-INF/partials/head.jsp">--%>
-        <%--<jsp:param name="title" value="Welcome to my site!" />--%>
-    <%--</jsp:include>--%>
-<%--</head>--%>
-<%--<body>--%>
-    <%--<jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
-    <%--<div class="container">--%>
-        <%--<h1>Welcome to the Adlister!</h1>--%>
-    <%--</div>--%>
-<%--</body>--%>
-<%--</html>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform" xmlns:jsp="http://www.w3.org/1999/XSL/Transform">
@@ -24,10 +9,10 @@
 </head>
 
 <body>
-
+<!-- Header -->
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-<!-- Header -->
+
 <a name="about"></a>
 <div class="intro-header">
     <div class="container">
@@ -38,17 +23,6 @@
                     <h1>frugalFinds</h1>
                     <h3>We are freaks about being cheap. You should be too.</h3>
                     <hr class="intro-divider">
-                    <!--<ul class="list-inline intro-social-buttons">-->
-                    <!--<li>-->
-                    <!--<a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                    <!--<a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                    <!--<a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>-->
-                    <!--</li>-->
-                    <!--</ul>-->
                 </div>
             </div>
         </div>
@@ -62,8 +36,8 @@
 <!-- Page Content -->
 
 <a  name="services"></a>
-<div class="content-section-a">
 
+<div class="content-section-a">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-sm-6">
@@ -73,8 +47,6 @@
                 <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <!-- worry about ipad image first -->
-                <%--<img class="img-responsive" src="WEB-INF/resources/img/ipad.png" alt="">--%>
                 <img class="img-responsive" src="/resources/img/ipad.png" alt="image of ipad"/>
             </div>
         </div>

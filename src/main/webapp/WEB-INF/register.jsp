@@ -113,7 +113,7 @@
                     }
                 }
             });
-            $('input').on('blur', function() {
+            $('input').keyup(function() {
                 if ($("#registration_form").valid()) {
                     $('#register').prop('disabled', false);
                 } else {

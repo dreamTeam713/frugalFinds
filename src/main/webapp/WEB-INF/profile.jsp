@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -23,7 +24,7 @@
         }
         .col-md-4{
             border: solid 1px grey;
-            height: 420px;
+            height: 450px;
             width: 32%;
             margin-right: 10px;
             margin-bottom: 10px;
@@ -45,8 +46,9 @@
             <c:forEach var="ad" items="${userAds}">
                 <div class="col-md-4">
                     <img class="center-block img-responsive" src="${ad.url}" alt="">
-                    <h2 class="adTitle">${ad.title}</h2>
-                    <h3 class="adDescription" id="descriptionParagraph" style="margin-top: 0px; height: 52px">${ad.description}</h3>
+                    <h2 class="pull-right">$<fmt:formatNumber type = "number" maxFractionDigits = "2" value = "${ad.price}" /></h2>
+                    <h1 class="adTitle">${ad.title}</h1>
+                    <h3 class="adDescription" id="descriptionParagraph" style="margin-top: 0px; height: 80px">${ad.description}</h3>
                     <c:if test="${sessionScope.user.id == ad.userId}">
                         <input id="editButton" type="button" value="edit" class="btn btn-primary editButton" data-adid="${ad.id}" data-target="#myModal" data-toggle="modal">
                         <input id="deleteButton" type="button" value="delete" class="btn btn-primary deleteButton" data-adid="${ad.id}">
@@ -92,15 +94,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="photo">Upload an image</label>
-                                <input type="file" name="photo" id="photo" />
+                                <input type="file" name="photo" id="photo" accept="Image/*" />
+                                <span id="imageError" class="hideForm" style="color: red">File must be an image</span>
                             </div>
-                            <%--<div class="form-group">--%>
-                                <%--<label for="editUrl">Pic URL</label>--%>
-                                <%--<input type="text" class="form-control" id="editUrl" name="url">--%>
-                            <%--</div>--%>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <input id="submitForm" type="submit" class="btn btn-default btn-primary">
+                                <input id="submitForm" type="submit" class="btn btn-default btn-primary" disabled>
                             </div>
                         </form>
                     </div>
@@ -115,11 +114,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script>
 
-        // var footer = document.getElementById('footer');
-        // footer.classList.add('footer');
-        // footer.classList.add('navbar-fixed-bottom');
+        var footer = document.getElementById('footer');
+        footer.classList.add('footer');
+        footer.classList.add('navbar-fixed-bottom');
 
-        $('#submitForm').click(function () {
+
+        $('#submitForm').click(function (e) {
             if($('#photo').val() == ""){
                 $('#hasPic').val(0);
             }else{
@@ -128,6 +128,7 @@
         });
 
         $('#myModal').on('show.bs.modal', function (event) {
+            $('#imageError').addClass('hideForm');
             var button = $(event.relatedTarget); // Button that triggered the modal
             if(button.data("type") === "create"){
                 $('#modalForm').attr('action', "/ads/create");
@@ -170,19 +171,32 @@
             $('#createForm').toggle();
         });
 
-        $('#priceInput').keyup(function(){
-            if(!(/^\d*(\.)?\d*$/).test($('#priceInput').val())){
-                $('#priceInput').val($('#priceInput').val().match(/\d*(\.\d+)?/g).join(''))
+        $('#editPrice').keyup(function(){
+            if(!(/^\d*(\.)?\d*$/).test($('#editPrice').val())){
+                $('#editPrice').val($('#editPrice').val().match(/\d*(\.\d+)?/g).join(''))
             }
         });
 
-        $('#title1, #description1, #priceInput').keyup(function () {
-            if($('#title1').val() != '' && $('#description1').val()!='' && $('#priceInput').val() != ''){
-                $('#submitNewAd').prop('disabled',false)
+        $('#editTitle, #editDescription, #editPrice').keyup(function () {
+            if($('#editTitle').val() != '' && $('#editDescription').val()!='' && $('#editPrice').val() != ''){
+                $('#submitForm').prop('disabled',false)
             }else {
-                $('#submitNewAd').prop('disabled',true)
+                $('#submitForm').prop('disabled',true)
             }
         });
+        
+        // $('#photo').select(function () {
+        //         var index = $('#photo').val().indexOf(".");
+        //         var ext = $('#photo').val().substring(index);
+        //         var status = $('#submitForm').prop('disabled');
+        //         if((ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".gif" || ext == ".webp") && status != false) {
+        //             $('#imageError').addClass('hideForm');
+        //         }else{
+        //             $('#imageError').removeClass('hideForm');
+        //             $('#submitForm').prop('disabled',true)
+        //         }
+        //      })
+
 
 
     </script>

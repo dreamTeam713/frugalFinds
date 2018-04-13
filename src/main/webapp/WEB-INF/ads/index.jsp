@@ -42,6 +42,11 @@
             <c:if test="${loop.count} % 2 == 0">
                 </div> <!-- end of row -->
             </c:if>
+            <c:if test="${loop.last}">
+                <script>
+                    var lastItem = document.getElementById()
+                </script>
+            </c:if>
         </c:forEach>
     </c:if>
     <c:if test="${empty ads}">

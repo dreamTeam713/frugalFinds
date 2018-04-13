@@ -120,7 +120,7 @@ html {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url('resources/img/banner-bg.jpg') no-repeat center center;
+    background: url('/resources/img/banner-bg.jpg') no-repeat center center;
     background-size: cover;
 }
 
@@ -173,4 +173,8 @@ html {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+.push {
+    height: 20px;
 }

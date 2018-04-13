@@ -22,11 +22,11 @@
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
                 <a class="navbar-brand topnav" href="/ads">View Ads</a>
-                <c:if test="${sessionScope.user==null}">
+                <c:if test="${sessionScope.user == null}">
                     <li><a href="/register">Register</a></li>
                     <li><a href="/login">Login</a></li>
                 </c:if>
-                <c:if test="${sessionScope.user!=null}">
+                <c:if test="${sessionScope.user != null}">
                     <li><a href="/profile">Hi <c:out value="${sessionScope.user.username}"></c:out></a></li>
                     <li><a href="/logout">Logout</a></li>
                 </c:if>

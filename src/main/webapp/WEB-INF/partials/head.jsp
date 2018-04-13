@@ -12,25 +12,4 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<style>
-    .hideForm{
-        display: none;
-    }
-    #adId{
-        display: none;
-    }
-    #descriptionParagraph{
-        max-height: 75px;
-        overflow-y: scroll;
-    }
-    body{
-        font-family: 'Acme', sans-serif;
-    }
-    body > .container {
-        padding-bottom: 100px;
-    }
-    .adDescription{
-        /*font-family: 'East Sea Dokdo', cursive;*/
-    }
-</style>
 

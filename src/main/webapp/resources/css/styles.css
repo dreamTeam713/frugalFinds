@@ -10,8 +10,8 @@
     overflow-y: scroll;
 }
 
-.adTitle{
-
+body > .container{
+    padding-bottom: 100px;
 }
 .adDescription{
     font-family: 'East Sea Dokdo', cursive;

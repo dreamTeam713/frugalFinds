@@ -21,21 +21,32 @@
         .container {
             margin-outside: 10%;
         }
+        .col-md-4{
+            border: solid 1px grey;
+            height: 420px;
+            width: 32%;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .col-md-4 > img{
+            height: 250px;
+        }
     </style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}! </h1>
+        <h1>Welcome, ${sessionScope.user.username}!</h1>
         <div>
             <h3>Here are the ads you've created!<button id="createButton" class="btn btn-default btn-sm" data-type="create" data-target="#myModal" data-toggle="modal">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Ad
             </button></h3>
 
             <c:forEach var="ad" items="${userAds}">
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <img class="center-block img-responsive" src="${ad.url}" alt="">
                     <h2 class="adTitle">${ad.title}</h2>
-                    <h3 class="adDescription" id="descriptionParagraph">${ad.description}</h3>
+                    <h3 class="adDescription" id="descriptionParagraph" style="margin-top: 0px; height: 52px">${ad.description}</h3>
                     <c:if test="${sessionScope.user.id == ad.userId}">
                         <input id="editButton" type="button" value="edit" class="btn btn-primary editButton" data-adid="${ad.id}" data-target="#myModal" data-toggle="modal">
                         <input id="deleteButton" type="button" value="delete" class="btn btn-primary deleteButton" data-adid="${ad.id}">

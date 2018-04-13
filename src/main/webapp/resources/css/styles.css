@@ -16,6 +16,7 @@
 .adDescription{
     font-family: 'East Sea Dokdo', cursive;
 }
+
 body,
 html {
     padding-top: 30px;
@@ -23,17 +24,6 @@ html {
     height: 100%;
     font-family: 'Acme', sans-serif;
 }
-
-/*body,*/
-/*h1,*/
-/*h2,*/
-/*h3,*/
-/*h4,*/
-/*h5,*/
-/*h6 {*/
-    /*font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;*/
-    /*font-weight: 700;*/
-/*}*/
 
 .topnav {
     font-size: 14px;
@@ -174,8 +164,10 @@ html {
     }
 }
 
-footer {
-    padding: 50px 0;
+.footer {
+    bottom: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
     background-color: #f8f8f8;
 }
 

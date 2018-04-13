@@ -26,8 +26,8 @@
     body{
         font-family: 'Acme', sans-serif;
     }
-    .adTitle{
-
+    body > .container {
+        padding-bottom: 100px;
     }
     .adDescription{
         /*font-family: 'East Sea Dokdo', cursive;*/

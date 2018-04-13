@@ -1,7 +1,7 @@
 <!-- separate footer for changing the footer on all pages later on -->
 
 <!-- Footer -->
-<footer id="footer" class="footer">
+<footer id="footer" class="footer" style="padding-bottom: 20px; padding-top: 20px">
     <div class="container">
         <div class="col-lg-12">
             <ul class="list-inline">

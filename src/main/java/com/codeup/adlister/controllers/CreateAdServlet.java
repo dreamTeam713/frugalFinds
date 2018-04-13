@@ -39,30 +39,24 @@ public class CreateAdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String filename = "";
         String url = "";
-        User newUser = (User) request.getSession().getAttribute("user");
-        if (request.getPart("photo") == null) {
-            if (request.getParameter("url") == null) {
-                url = "https://is3-ssl.mzstatic.com/image/thumb/Purple30/v4/1f/a4/83/1fa4837d-7775-681c-2815-e9c36c9c7285/mzm.cqfnvudd.png/1200x630bb.jpg";
-            }
+        System.out.println("url= " + request.getParameter("url"));
+        System.out.println("photo= " + request.getPart("photo"));
+        if (request.getParameter("addedPicture").equals("0")) {
+          url = "https://is3-ssl.mzstatic.com/image/thumb/Purple30/v4/1f/a4/83/1fa4837d-7775-681c-2815-e9c36c9c7285/mzm.cqfnvudd.png/1200x630bb.jpg";
         } else {
             String appPath = request.getServletContext().getRealPath("");
             String savePath = appPath + SAVE_DIR;
             Part part = request.getPart("photo");
-            System.out.println(appPath);
-            System.out.println(savePath);
             File fileSaveDir = new File(savePath);
             if (!fileSaveDir.exists()) {
                 fileSaveDir.mkdir();
             }
             filename = savePath + File.separator + extractFileName(part);
             url = SAVE_DIR + File.separator + extractFileName(part);
-            System.out.println("Adding the reference to: " + url + " for the image: " + filename);
             part.write(filename);
-            System.out.println(filename + " was saved to server for " + newUser.getUsername());
-            System.out.println("real path: " + request.getServletContext().getRealPath("/resources/img"));
         }
         Ad ad = new Ad(
-            newUser.getId(),
+            Long.parseLong(request.getParameter("userId")),
             request.getParameter("title"),
             request.getParameter("description"),
             Double.parseDouble(request.getParameter("price")),
